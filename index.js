@@ -21,6 +21,8 @@ app.get('/create', async (req,res)=>{
     else {
         result = janusInteractor.preMadeRooms.pop();
     }
+
+     result = await janusInteractor.createRoom();
     res.send(`${result.data.room}`);
 });
 
