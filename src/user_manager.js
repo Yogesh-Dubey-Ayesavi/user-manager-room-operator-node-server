@@ -10,7 +10,6 @@ export class UserManager{
     }
 
     getIndex(item,data){
-        console.log(item,data)
         return item?.name == data?.user?.name;
     }
 
