@@ -14,8 +14,14 @@ const userManager = new UserManager();
 app.get('/',(req,res)=>res.send("Hello Yogesh"))
 
 app.get('/create', async (req,res)=>{
-    let result = await janusInteractor.createRoom();
-    res.send(`Your room id is ${result.data.room}`);
+    let result ;
+    if (janusInteractor.preMadeRooms.length == 0 ){
+        result = await janusInteractor.createRoom();
+    }
+    else {
+        result = janusInteractor.preMadeRooms.pop();
+    }
+    res.send(`${result.data.room}`);
 });
 
 app.post('/register',(req,res)=>{
@@ -28,11 +34,10 @@ app.get('/get_users',(req,res)=>{
 });
 
 app.get('/dlt',(req,res)=>{
-    console.log(req)
-    res.send (`Your val is ${userManager.delete(req.body,res)}`);
+    res.send (`${userManager.delete(req.body,res)}`);
 });
 
 
 
-app.listen(3000,()=>console.log("server started"))
+app.listen(4000,()=>console.log("server started"))
 

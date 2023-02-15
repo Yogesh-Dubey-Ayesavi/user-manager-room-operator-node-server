@@ -11,6 +11,7 @@ export class JanusInteractor{
             },
         }),console);
         this.publisher = undefined;
+        this.preMadeRooms = []
         this.janusConnection = undefined;
         this.roomConfig = new JanusRoomConfig({
             codec: 'vp8,vp9,h264',
@@ -18,6 +19,14 @@ export class JanusInteractor{
             id : "uid1-uid2"
             })
             this.init();
+    }
+
+    async createPreMade(){
+        for (let i = 0 ;i<100;i++){
+            this.preMadeRooms.push(await this.publisher.createRoom())
+            console.log('rooms created');
+        }
+
     }
 
     async init(){
@@ -28,6 +37,8 @@ export class JanusInteractor{
     async createPublisher(){
         this.publisher = new VideoRoomPublisherJanusPlugin(this.roomConfig, 'operator', console, false);
         await this.janusConnection.addPlugin(this.publisher)
+        this.createPreMade();
+
     }
 
     async createRoom(){
