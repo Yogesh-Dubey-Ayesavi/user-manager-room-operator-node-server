@@ -1,4 +1,4 @@
-import {Janus,JanusConfig,VideoRoomPublisherJanusPlugin,JanusRoomConfig} from  '@techteamer/janus-api';
+import {Janus,JanusConfig,VideoRoomPublisherJanusPlugin,JanusRoomConfig} from  'janus-api';
 
 export class JanusInteractor{
 

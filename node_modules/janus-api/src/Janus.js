@@ -11,6 +11,7 @@ class Janus {
   constructor (config, logger) {
     this.ws = undefined
     this.isConnected = false
+    this.isRest = false
     this.sessionId = undefined
     this.logger = logger
 
@@ -47,7 +48,6 @@ class Janus {
 
         const transaction = uuid()
         const request = { janus: 'create', transaction }
-
         this.transactions[transaction] = {
           resolve: (json) => {
             if (json.janus !== 'success') {
@@ -70,7 +70,6 @@ class Janus {
 
         this.websocketSend(JSON.stringify(request))
       })
-
       this.ws.addEventListener('message', (event) => { this.onMessage(event) })
       this.ws.addEventListener('close', () => { this.onClose() })
     })

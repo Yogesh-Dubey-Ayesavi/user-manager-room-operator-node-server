@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@techteamer/janus-api": "^6.4.0",
+    "janus-api": "https://github.com/Yogesh-Dubey-Ayesavi/janus-api-1.git",
     "express": "^4.18.2"
   }
 }
