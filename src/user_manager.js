@@ -38,14 +38,14 @@ export class UserManager{
 
     async recommendation(user){
  /// addition of user
-        this.add(user?.user);
+        this.add(user);
         let sampleUserList = [];
        /// sequentially defining them.
         sampleUserList = Object.values(this.userMap)
         sampleUserList.sort((a,b)=>{
          return Math.abs(a?.age - user?.age)  < Math.abs(b?.age - user?.age) ? -1: Math.abs(a?.age - user?.age ) == Math.abs(b?.age - user?.age)?0:1;
         })
-        return this.confirmation(sampleUserList.slice(0 ,5),user?.user) 
+        return this.confirmation(sampleUserList.slice(0 ,5),user) 
         // for (let i = 0 ;i < Object.length(this.userMap) ;i++){
 
         // }

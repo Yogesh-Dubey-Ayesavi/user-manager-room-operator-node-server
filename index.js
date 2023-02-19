@@ -46,7 +46,7 @@ app.post("/confirm",(req,res)=>{
 app.get('/recommendme',async (req,res)=>{
 
     let room = janusInteractor.preMadeRooms.pop()
-    let val = await  userManager.recommendation(req.body)
+    let val = await  userManager.recommendation(req.body.user)
     if (val != null){
         res.send({
             user:val,
