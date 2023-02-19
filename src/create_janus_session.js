@@ -20,12 +20,24 @@ export class JanusInteractor{
             })
             this.init();
     }
+    
+
+     randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+  
 
     async createPreMade(){
-        for (let i = 0 ;i<100;i++){
-            this.preMadeRooms.push(await this.publisher.createRoom())
+   
+        setTimeout(()=>{
+                 for (let i = 0 ;i<1200;i++){
+        //     this.preMadeRooms.push((await this.publisher.createRoom()).data.room)
+        this.preMadeRooms.push(this.randomIntFromInterval(432432432432,45242373243))
+
             console.log('rooms created');
         }
+            
+        },300)
 
     }
 
