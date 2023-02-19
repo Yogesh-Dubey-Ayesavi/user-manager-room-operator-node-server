@@ -34,7 +34,6 @@ export class JanusInteractor{
         //     this.preMadeRooms.push((await this.publisher.createRoom()).data.room)
         this.preMadeRooms.push(this.randomIntFromInterval(432432432432,45242373243))
 
-            console.log('rooms created');
         }
             
         },300)
