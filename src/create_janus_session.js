@@ -1,8 +1,9 @@
 import {Janus,JanusConfig,VideoRoomPublisherJanusPlugin,JanusRoomConfig} from  'janus-api';
-
+import {eventEmitter} from '../index.js';
 export class JanusInteractor{
 
     constructor() {
+
         this.janus = new Janus(new JanusConfig({
             url: 'wss://proficientio.top/websocket',
             keepAliveIntervalMs: 30000,
@@ -19,7 +20,12 @@ export class JanusInteractor{
             id : "uid1-uid2"
             })
             this.init();
-    }
+            eventEmitter.on('RoomCreation',()=>{
+                if (this.preMadeRooms.length < 5){
+                    this.createPreMade();
+                }
+            });
+        }
     
 
      randomIntFromInterval(min, max) { // min and max included 
@@ -28,15 +34,14 @@ export class JanusInteractor{
   
 
     async createPreMade(){
-   
-        setTimeout(()=>{
-                 for (let i = 0 ;i<1200;i++){
-        //     this.preMadeRooms.push((await this.publisher.createRoom()).data.room)
-        this.preMadeRooms.push(this.randomIntFromInterval(432432432432,45242373243))
+        // setTimeout(()=>{
+                 for (let i = 0 ;i<5;i++){
+            this.preMadeRooms.push((await this.publisher.createRoom()).data.room)
+        // this.preMadeRooms.push(this.randomIntFromInterval(432432432432,45242373243))
 
         }
             
-        },300)
+        // },300)
 
     }
 

@@ -1,12 +1,17 @@
 import express from "express"
 import { JanusInteractor } from './src/create_janus_session.js';
 import { UserManager } from './src/user_manager.js';
+import EventEmitter from 'events';
 
 const app = express();
+
 app.use(express.json())
 
-const janusInteractor = new JanusInteractor()
+export const eventEmitter = new EventEmitter();
+const janusInteractor = new JanusInteractor();
 const userManager = new UserManager(); 
+
+
 
 app.get('/',(req,res)=>res.send("Hello Yogesh"))
 

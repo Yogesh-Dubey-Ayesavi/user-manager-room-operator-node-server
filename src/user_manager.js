@@ -1,12 +1,15 @@
+import {eventEmitter} from '../index.js';
+
 export class UserManager{
 
     constructor() {
-        this.userMap = {}
+        this.userMap = {};
     } 
 
     add(data){
         !Object.entries(this.userMap).includes(data?.uid)? 
            this.userMap[data?.uid] = data : this.userMap[data?.uid] = this.userMap[data?.uid].sid;
+        eventEmitter.emit('RoomCreation')
         }
 
 
