@@ -25,7 +25,7 @@ app.get('/create', async (req,res)=>{
 });
 
 app.post('/register',(req,res)=>{
-        userManager.add(req.body);
+        userManager.add(req.body?.user);
         res.send('registered');});
 
 app.get('/get_users',(req,res)=>{
@@ -39,18 +39,21 @@ app.get('/dlt',(req,res)=>{
 
 
 app.post("/confirm",(req,res)=>{
-   let val = userManager.confirmation(req.body)
+//    let val = userManager.confirmation(req.body)
        res.send(val)
 });
 
 app.get('/recommendme',async (req,res)=>{
 
     let room = janusInteractor.preMadeRooms.pop()
-    let val = await  userManager.recommendation(req.body.user)
-    res.send({
-        user:val,
-        room:room
-    })
+    let val = await  userManager.recommendation(req.body)
+    if (val != null){
+        res.send({
+            user:val,
+            room:room
+        })
+    }
+    else {res.send({})}
     // res.send (`${userManager.delete(req.body,res)}`);
 });
 
