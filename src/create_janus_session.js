@@ -32,13 +32,14 @@ export class JanusInteractor{
   
 
     async createPreMade(){
-       try{ // setTimeout(()=>{
+        console.log('started premade');
+    //    try{ // setTimeout(()=>{
                  for (let i = 0 ;i<5;i++){
-            this.preMadeRooms.push((await this.publisher.createRoom()))
+                    let room = await this.publisher.createRoom();
+                    console.log(this.preMadeRooms)
+            this.preMadeRooms.push(room.data.room);
         // this.preMadeRooms.push(this.randomIntFromInterval(432432432432,45242373243))
 
-        }}catch(e){
-            return e;
         }
             
         // },300)
