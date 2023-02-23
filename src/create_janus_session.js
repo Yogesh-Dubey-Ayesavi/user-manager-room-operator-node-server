@@ -1,11 +1,10 @@
 import {Janus,JanusConfig,VideoRoomPublisherJanusPlugin,JanusRoomConfig} from  'janus-api';
-import {eventEmitter} from '../index.js';
+import { eventEmitter } from '../index.js';
 export class JanusInteractor{
 
     constructor() {
-
         this.janus = new Janus(new JanusConfig({
-            url: 'ws://13.233.88.138:8188',
+            url: 'ws://13.235.79.20:8188',
             keepAliveIntervalMs: 30000,
             options: {
             rejectUnauthorized: false
@@ -26,7 +25,6 @@ export class JanusInteractor{
                 }
             });
         }
-    
 
      randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -34,11 +32,13 @@ export class JanusInteractor{
   
 
     async createPreMade(){
-        // setTimeout(()=>{
+       try{ // setTimeout(()=>{
                  for (let i = 0 ;i<5;i++){
-            this.preMadeRooms.push((await this.publisher.createRoom()).data.room)
+            this.preMadeRooms.push((await this.publisher.createRoom()))
         // this.preMadeRooms.push(this.randomIntFromInterval(432432432432,45242373243))
 
+        }}catch(e){
+            return e;
         }
             
         // },300)
