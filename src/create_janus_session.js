@@ -5,7 +5,7 @@ export class JanusInteractor{
     constructor() {
 
         this.janus = new Janus(new JanusConfig({
-            url: 'wss://proficientio.top/websocket',
+            url: 'ws://13.233.88.138:8188',
             keepAliveIntervalMs: 30000,
             options: {
             rejectUnauthorized: false
